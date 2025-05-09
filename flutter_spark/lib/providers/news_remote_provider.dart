@@ -12,7 +12,7 @@ class NewsRemoteProvider {
   }) async {
     Map<String, String> queryParams = {
       'apiKey': apiKey,
-      'q': 'bitcoin',
+      'q': search,
     };
 
     Uri url = Uri(

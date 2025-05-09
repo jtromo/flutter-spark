@@ -9,12 +9,21 @@ class ReactivePage extends StatefulWidget {
 }
 
 class _ReactivePageState extends State<ReactivePage> {
+  late bool _switchValue;
+
+  @override
+  void initState() {
+    super.initState();
+    _switchValue = false;
+  }
+
   @override
   Widget build(BuildContext context) {
     final mq = MediaQuery.of(context);
     final brightness = mq.platformBrightness;
     final mqOrientation = mq.orientation;
     final textScaler = mq.textScaler;
+
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
@@ -47,6 +56,15 @@ class _ReactivePageState extends State<ReactivePage> {
               Text("Brightness: $brightness"),
               Text("TextScaler: $textScaler"),
               Text("Orientation: $mqOrientation"),
+              Container(height: 30),
+              Text("-- Adaptive Widgets --", style: Theme.of(context).textTheme.headlineLarge),
+              Switch.adaptive(
+                  value: _switchValue,
+                  onChanged: (newValue) {
+                    setState(() {
+                      _switchValue = newValue;
+                    });
+                  }),
             ],
           ),
         );
