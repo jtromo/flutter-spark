@@ -13,6 +13,6 @@ class NewsRepository {
     // SQLite DB
 
     // remote (online)
-    return newsRemoteProvider.getNews(search: "news", apiKey: <api-key>);
+    return newsRemoteProvider.getNews(search: "news", apiKey: "<api-key>");
   }
 }
