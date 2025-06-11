@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_spark/bloc/profile/profile_bloc.dart';
+import 'package:flutter_spark/pages/animation_page.dart';
 import 'package:flutter_spark/pages/api_page.dart';
 import 'package:flutter_spark/pages/counter_page.dart';
 import 'package:flutter_spark/pages/grid_page.dart';
@@ -26,27 +27,18 @@ class SparkDrawer extends StatelessWidget {
                 color: Theme.of(context).colorScheme.primary,
                 child: InkWell(
                   onTap: () {
-                    Navigator.of(context).push(
-                      MaterialPageRoute(builder: (context) => const ProfilePage()),
-                    );
+                    Navigator.of(context).push(MaterialPageRoute(builder: (context) => const ProfilePage()));
                   },
                   child: DrawerHeader(
                     // decoration: BoxDecoration(color: Colors.blue),
                     child: (state is ProfileUpdated)
                         ? Column(
                             children: [
-                              CircleAvatar(
-                                foregroundImage: state.profile.profileImage.image,
-                                radius: 50,
-                              ),
+                              CircleAvatar(foregroundImage: state.profile.profileImage.image, radius: 50),
                               Text("${state.profile.firstName} ${state.profile.lastName}"),
                             ],
                           )
-                        : const CircleAvatar(
-                            minRadius: 20,
-                            maxRadius: 50,
-                            child: Icon(Icons.person),
-                          ),
+                        : const CircleAvatar(minRadius: 20, maxRadius: 50, child: Icon(Icons.person)),
                   ),
                 ),
               ),
@@ -54,18 +46,14 @@ class SparkDrawer extends StatelessWidget {
                 leading: const Icon(Icons.home),
                 title: const Text('Home'),
                 onTap: () {
-                  Navigator.of(context).pushReplacement(
-                    MaterialPageRoute(builder: (context) => const HomePage()),
-                  );
+                  Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => const HomePage()));
                 },
               ),
               ListTile(
                 leading: const Icon(Icons.calculate),
                 title: const Text('Counter'),
                 onTap: () {
-                  Navigator.of(context).pushReplacement(
-                    MaterialPageRoute(builder: (context) => const CounterPage()),
-                  );
+                  Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => const CounterPage()));
                 },
               ),
               ListTile(
@@ -73,17 +61,16 @@ class SparkDrawer extends StatelessWidget {
                 title: const Text('Theme'),
                 onTap: () {
                   // close drawer
-                  Navigator.of(context).pushReplacement(
-                    MaterialPageRoute(builder: (context) => const ThemePage()),
-                  );
+                  Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => const ThemePage()));
                 },
               ),
               ListTile(
                 leading: const Icon(Icons.image),
                 title: const Text('Image Picker'),
                 onTap: () {
-                  Navigator.of(context)
-                      .pushReplacement(MaterialPageRoute(builder: (context) => const ImagePickerPage()));
+                  Navigator.of(
+                    context,
+                  ).pushReplacement(MaterialPageRoute(builder: (context) => const ImagePickerPage()));
                 },
               ),
               ListTile(
@@ -105,6 +92,13 @@ class SparkDrawer extends StatelessWidget {
                 title: const Text('API'),
                 onTap: () {
                   Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => const ApiPage()));
+                },
+              ),
+              ListTile(
+                leading: const Icon(Icons.animation),
+                title: const Text('Animations'),
+                onTap: () {
+                  Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => const AnimationPage()));
                 },
               ),
               Divider(color: Theme.of(context).colorScheme.inversePrimary),
