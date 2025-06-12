@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_spark/bloc/animation/animation_cubit.dart';
 import 'package:flutter_spark/bloc/counter/counter_cubit.dart';
 import 'package:flutter_spark/bloc/like/like_cubit.dart';
 import 'package:flutter_spark/bloc/news/news_bloc.dart';
@@ -20,12 +21,17 @@ class App extends StatelessWidget {
     return MultiBlocProvider(
       providers: [
         BlocProvider(create: (context) => ThemeCubit()),
+        BlocProvider(create: (context) => AnimationCubit()),
         BlocProvider(create: (context) => CounterCubit()),
         BlocProvider(create: (context) => ProfileBloc()),
         BlocProvider(
-            create: (context) => NewsBloc(
-                newsRepository:
-                    NewsRepository(newsRemoteProvider: NewsRemoteProvider(), newsLocalProvider: NewsLocalProvider()))),
+          create: (context) => NewsBloc(
+            newsRepository: NewsRepository(
+              newsRemoteProvider: NewsRemoteProvider(),
+              newsLocalProvider: NewsLocalProvider(),
+            ),
+          ),
+        ),
         BlocProvider(create: (context) => LikeCubit()),
       ],
       child: BlocBuilder<ThemeCubit, ThemeState>(

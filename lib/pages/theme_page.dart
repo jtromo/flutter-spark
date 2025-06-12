@@ -30,10 +30,7 @@ class _ThemePageState extends State<ThemePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        title: Text(widget.title),
-      ),
+      appBar: AppBar(backgroundColor: Theme.of(context).colorScheme.inversePrimary, title: Text(widget.title)),
       drawer: const SparkDrawer(),
       body: MultiBlocListener(
         listeners: [
@@ -46,14 +43,7 @@ class _ThemePageState extends State<ThemePage> {
           ),
         ],
         child: const Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              Text(
-                'Theme',
-              ),
-            ],
-          ),
+          child: Column(mainAxisAlignment: MainAxisAlignment.center, children: <Widget>[Text('Theme')]),
         ),
       ),
       floatingActionButton: Column(
@@ -61,7 +51,7 @@ class _ThemePageState extends State<ThemePage> {
         children: [
           FloatingActionButton(
             heroTag: "random theme",
-            onPressed: _themeCubit.randomTheme,
+            onPressed: _themeCubit.randomizeTheme,
             tooltip: 'Random Theme',
             child: const Icon(Icons.palette),
           ),

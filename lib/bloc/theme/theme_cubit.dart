@@ -7,6 +7,6 @@ class ThemeCubit extends Cubit<ThemeState> {
   ThemeCubit() : super(ThemeInitial());
 
   void changeTheme(ThemeData theme) => emit(ThemeStateUpdated(theme: theme));
-  void randomTheme() => emit(ThemeStateUpdated(theme: Utils.generateRandomTheme()));
+  void randomizeTheme() => emit(ThemeStateUpdated(theme: Utils.generateRandomTheme()));
   void reset() => emit(ThemeInitial());
 }
